@@ -8,11 +8,13 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="form-box">
             <h2>Nhập họ tên</h2>
-            <input type="text" placeholder="Họ và tên" />
-            <button>Gửi</button>
+            <input id="fullname" type="text" placeholder="Họ và tên" />
+            <button id="submit-btn"
+                onclick="ThongBao('Số mệnh của bạn là: ' + TinhSoMenh(ChuyenTiengVietKhongDau(document.getElementById('fullname').value)))">Gửi</button>
         </div>
     </div>
 
