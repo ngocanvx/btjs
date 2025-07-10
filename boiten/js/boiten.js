@@ -1,3 +1,6 @@
+//=========================================================
+// GÁN SỰ KIỆN CHO CÁC NÚT BẤM
+//=========================================================
 // Hàm hiển thị thông báo
 function ThongBao(noidung) {
     alert(noidung);
@@ -38,6 +41,8 @@ function SoPythagoreKyTu(kyTu) {
 }
 
 // Hàm tính số mệnh dựa trên họ tên
+// Trả về giá trị số mệnh
+// Tổng các số Pythagore của từng ký tự trong họ tên
 function TinhSoMenh(hoten) {
     // Tính toán số mệnh dựa trên họ tên
     // (Ví dụ: tính tổng số ký tự, hoặc thực hiện một phép toán nào đó)
@@ -64,6 +69,20 @@ function TinhSoMenh(hoten) {
 function GiaiMaSoMenh(somenh) {
     // Giải mã số mệnh
     // (Ví dụ: trả về một thông điệp dựa trên số mệnh)
+    fetch('./js/somenh.json')
+        .then(response => response.json())
+        .then(data => {
+            // Tìm thông điệp tương ứng với số mệnh
+            var ketqua = data.find(item => item.so === somenh);
+            if (ketqua) {
+                alert("Số mệnh của bạn là: " + ketqua.tq);
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi khi lấy dữ liệu:', error);
+            alert("Đã xảy ra lỗi khi lấy thông tin số mệnh.");
+        });
+
     var message = "Số mệnh của bạn là: " + somenh;
     return message;
 }

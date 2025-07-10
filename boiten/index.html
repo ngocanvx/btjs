@@ -14,11 +14,25 @@
             <h2>Nhập họ tên</h2>
             <input id="fullname" type="text" placeholder="Họ và tên" />
             <button id="submit-btn"
-                onclick="ThongBao('Số mệnh của bạn là: ' + TinhSoMenh(ChuyenTiengVietKhongDau(document.getElementById('fullname').value)))">Gửi</button>
+                onclick="ThongBao('Số mệnh của bạn là: ' + GiaiMaSoMenh(TinhSoMenh(ChuyenTiengVietKhongDau(document.getElementById('fullname').value))))">Xem
+                kết quả</button>
         </div>
     </div>
 
+    <!-- Gán chức năng từ file script -->
     <script src="./js/boiten.js"></script>
+
+    <!-- Gán chức năng cho nút gửi -->
+    <script>
+        //Bắt sự kiện khi nhấn Enter
+        document.getElementById('fullname').addEventListener('keydown', function (event) {
+            if (event.key == 'Enter') {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của Enter
+                document.getElementById('submit-btn').click(); // Gọi hàm khi nhấn Enter
+            }
+        });
+
+    </script>
 </body>
 
 </html>
