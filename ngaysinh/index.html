@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/ngaysinh.css">
+    <title>Ý nghĩa ngày sinh!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Nhập ngày sinh</h2>
+            <input id="ngaysinh" type="date" placeholder="Ngày sinh" />
+            <button id="submit-btn"
+                onclick="GiaiMaSoMenh(TinhSoMenh(ChuyenTiengVietKhongDau(document.getElementById('ngaysinh').value)))">Xem
+                kết quả</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>...</h2>
+            <div id="modal-text" class="modal-text"></div>
+        </div>
+    </div>
+
+    <!-- Gán chức năng từ file script -->
+    <script src="./js/boiten.js"></script>
+
+    <!-- Gán chức năng cho nút gửi -->
+    <script>
+        //Bắt sự kiện khi nhấn Enter
+        document.getElementById('fullname').addEventListener('keydown', function (event) {
+            if (event.key == 'Enter') {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của Enter
+                document.getElementById('submit-btn').click(); // Gọi hàm khi nhấn Enter
+            }
+        });
+
+        // Đóng modal khi nhấn nút X
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector(".close").onclick = function () {
+                document.getElementById("modal").style.display = "none";
+            };
+
+            // Đóng modal khi bấm ra ngoài vùng modal-content
+            window.onclick = function (event) {
+                const modal = document.getElementById("modal");
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>
