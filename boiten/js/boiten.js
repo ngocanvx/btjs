@@ -73,16 +73,21 @@ function GiaiMaSoMenh(somenh) {
         .then(response => response.json())
         .then(data => {
             // Tìm thông điệp tương ứng với số mệnh
-            var ketqua = data.find(item => item.so === somenh);
+            var ketqua = data.find(item => parseInt(item.so) === somenh);
             if (ketqua) {
-                alert("Số mệnh của bạn là: " + ketqua.tq);
+                const content = `<h2>Số mệnh của bạn: ${somenh}</h2> \n` +
+                    `<h3>Tổng quát</h3>\n${ketqua.tq}\n` +
+                    `<h3>Tính tình</h3>\n${ketqua.tt}\n` +
+                    `<h3>Công việc</h3>\n${ketqua.cv}\n` +
+                    `<h3>Tình duyên</h3>\n${ketqua.td}\n`;
+
+                document.getElementById('modal-text').innerHTML = content;
+                document.getElementById('modal').style.display = 'block';
             }
         })
         .catch(error => {
             console.error('Lỗi khi lấy dữ liệu:', error);
             alert("Đã xảy ra lỗi khi lấy thông tin số mệnh.");
         });
-
-    var message = "Số mệnh của bạn là: " + somenh;
-    return message;
+    return true;
 }
