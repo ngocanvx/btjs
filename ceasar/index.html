@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/ceasar.css">
+    <title>Mã hóa Ceasar</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Nhập văn bản cần mã hóa/giải mã</h2>
+            <textarea id="input-txt" rows="4" cols="50" placeholder="Văn bản cần mã hóa"></textarea><br>
+            <label for="shift">Khóa dịch chuyển:</label>
+            <input id="shift" type="number" value="3" placeholder="Số dịch chuyển" />
+            <label for="bodau">Bỏ dấu Tiếng Việt</label>
+            <input id="bodau" type="checkbox">
+            <h2>Kết quả</h2>
+            <textarea id="result-txt" rows="4" cols="50" placeholder="Kết quả mã hóa"></textarea>
+            <button id="mahoa-btn" onclick="maHoa()">Mã hóa</button>
+            <button id="giaima-btn" onclick="giaiMa()">Giải mã</button>
+        </div>
+    </div>
+
+    <!-- Gán lệnh script -->
+    <script src="./js/ceasar.js"></script>
+</body>
+
+</html>
