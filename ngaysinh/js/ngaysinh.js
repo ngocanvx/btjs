@@ -1,10 +1,13 @@
 // Hàm tính số mệnh dựa trên ngày sinh
 // Trả về giá trị số mệnh
-function TinhSoMenh(dateNgaySinh) {
-    var somenh = new Date(dateNgaySinh).getDate();
+function TinhSoMenh(ngaysinh) {
+    var somenh = parseInt(ngaysinh);
     switch (somenh) {
         case 11:
+            // Nếu số mệnh là 11, giữ nguyên
+            return somenh;
         case 22:
+            // Nếu số mệnh là 22, giữ nguyên
             return somenh;
         default:
             while (somenh > 10) {

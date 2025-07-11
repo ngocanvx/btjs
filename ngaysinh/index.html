@@ -11,7 +11,11 @@
     <div class="container">
         <div class="form-box">
             <h2>Nhập ngày sinh</h2>
-            <input id="ngaysinh" type="date" placeholder="Ngày sinh" />
+
+            <select id="ngaysinh" placeholder="Ngày sinh">
+                <option value="">Chọn ngày sinh</option>
+            </select>
+
             <button id="submit-btn" onclick="GiaiMaSoMenh(TinhSoMenh(document.getElementById('ngaysinh').value))">Xem
                 kết quả</button>
         </div>
@@ -31,6 +35,16 @@
 
     <!-- Gán chức năng cho nút gửi -->
     <script>
+        // Sinh các ngày trong tháng cho dropdown
+        const ngaysinhSelect = document.getElementById('ngaysinh');
+        for (let i = 1; i <= 31; i++) {
+            let ngay = i < 10 ? "0" + i : i;
+            let option = document.createElement("option");
+            option.value = ngay;
+            option.text = "Ngày " + ngay;
+            ngaysinhSelect.appendChild(option);
+        }
+
         //Bắt sự kiện khi nhấn Enter
         document.getElementById('ngaysinh').addEventListener('keydown', function (event) {
             if (event.key == 'Enter') {
