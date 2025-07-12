@@ -8,11 +8,9 @@ function boiTinhYeu(event) {
     var name2 = document.getElementById("name2").value;
     var result = document.getElementById("result");
 
-    // Thực hiện lấy kết quả và hiển thị
-    var somenh = tinhSoTinhYeu(name1, name2);
-
     // Gọi hàm giải mã số mệnh và hiển thị kết quả
-    GiaiMaSoMenh(somenh, result);
+    GiaiMaSoMenh(name1, name2, result);
+
 };
 
 // Hàm loại bỏ dấu tiếng Việt trong tên
@@ -48,9 +46,12 @@ function tinhSoTinhYeu(name1, name2) {
 }
 
 // Hàm gọi giải mã số mệnh
-function GiaiMaSoMenh(somenh, resultElement) {
+function GiaiMaSoMenh(name1, name2, resultElement) {
     // Giải mã số mệnh
     // (Ví dụ: trả về một thông điệp dựa trên số mệnh)
+    // Thực hiện lấy kết quả và hiển thị
+    var somenh = tinhSoTinhYeu(name1, name2);
+
     fetch('./js/boitinhyeu.json')
         .then(response => response.json())
         .then(data => {
@@ -61,12 +62,62 @@ function GiaiMaSoMenh(somenh, resultElement) {
             } else {
                 resultElement.innerHTML = `<h3>Không tìm thấy thông tin cho số mệnh: ${somenh}</h3>`;
             }
+
+            // Hiển thị ý nghĩa số chữ cái
+            ynghiaSoChuCai(name1, name2, resultElement);
         })
         .catch(error => {
             console.error('Lỗi khi lấy dữ liệu:', error);
             alert("Đã xảy ra lỗi khi lấy thông tin số mệnh.");
         });
 }
+
+// Xác định tính cách dựa trên ký tự đầu của tên
+function XacDinhTinhCach(hoten) {
+    // Bỏ dấu tiếng Việt và chuyển về chữ hoa
+    hoten = hoten.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
+    hoten = hoten.trim(); // Xóa khoảng trắng đầu/cuối
+
+    let tu = hoten.split(/\s+/); // Tách thành mảng các từ
+    let ten = tu[tu.length - 1]; // Lấy từ cuối cùng
+    switch (ten.charAt(0).toUpperCase()) {
+        case 'A': case 'D': case 'O':
+            return "Mạnh mẽ, quyết đoán nhưng đôi khi hơi bảo thủ.";
+        case 'B': case 'K': case 'T':
+            return "Lãng mạn, nhẹ nhàng, dễ bị tổn thương trong tình yêu.";
+        case 'C': case 'L': case 'U':
+            return "Hòa đồng, vui vẻ, thích một tình yêu đầy màu sắc.";
+        case 'E': case 'N': case 'W':
+            return "Trí tuệ, sáng tạo, đôi khi thích kiểm soát đối phương.";
+        case 'F': case 'O': case 'X':
+            return "Đam mê, mãnh liệt, luôn hết mình vì tình yêu.";
+        case 'G': case 'P': case 'Y':
+            return "Thông minh, lý trí, thích một tình yêu bền vững.";
+        case 'H': case 'Q': case 'Z':
+            return "Chung thủy, chân thành, đôi khi hơi khô khan.";
+        case 'I': case 'R':
+            return "Nhạy cảm, dễ xúc động nhưng rất sâu sắc trong tình cảm.";
+    }
+}
+
+
+// Ý nghĩa số chữ cái trong tên của 2 người
+function ynghiaSoChuCai(name1, name2, resultElement) {
+    var soChuCai = 0;
+
+    var tenchung = boiTinhYeuBoDau(name1) + boiTinhYeuBoDau(name2);
+    tenchung = boiTinhYeuBoDau(tenchung).toUpperCase().replace(/\s/g, "");
+
+    if (tenchung.length % 2 === 0) {
+        // Nếu tổng số ký tự là chẵn, cộng tất cả các ký tự
+        resultElement.innerHTML += `<br>Hai bạn có mối quan hệ cân bằng, hòa hợp.`;
+        console.log("Số ký tự là chẵn: " + tenchung.length);
+    } else {
+        resultElement.innerHTML += `<br>Hai bạn có mối quan hệ có nhiều thử thách nhưng cũng đầy đam mê.`;
+        console.log("Số ký tự là lẻ: " + tenchung.length);
+    }
+}
+
 
 // Trả về số Pythagore của ký tự
 function SoPythagoreKyTu(kyTu) {
