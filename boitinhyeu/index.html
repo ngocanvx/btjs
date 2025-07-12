@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bói tình yêu</title>
+    <link rel="stylesheet" href="./css/boitinhyeu.css">
+</head>
+
+<body>
+    <div class="container">
+        <form class="love-form" onsubmit="boiTinhYeu(event); return false;">
+            <h3>Chào mừng đến với Bói Tình Yêu</h3>
+            <p>Nhập tên của bạn và người yêu để xem kết quả</p>
+
+            <input type="text" id="name1" placeholder="Tên bạn" required>
+            <input type="text" id="name2" placeholder="Tên người yêu" required>
+
+            <button type="submit" id="submit">Bói Tình Yêu</button>
+
+            <p id="result"></p>
+        </form>
+    </div>
+
+    <script src="./js/boitinhyeu.js" defer></script>
+</body>
+
+</html>
