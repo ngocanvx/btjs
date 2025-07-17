@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ nhập đáp án</title>
+    <link rel="stylesheet" href="./css/nhapdapan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <h1>CHƯƠNG TRÌNH HỖ TRỢ NHẬP ĐÁP ÁN</h1>
+    <div class="container">
+        <!-- PHẦN 1 -->
+        <div class="section1">
+            <h3>ĐÁP ÁN</h3>
+            <div class="tabs">
+                <button class="active" onclick="showTable(0)">Phần 1</button>
+                <button onclick="showTable(1)">Phần 2</button>
+                <button onclick="showTable(2)">Phần 3</button>
+                <select class="select">
+                    <option value="" disabled selected>Chọn kiểu điểm</option>
+                    <option value=" type1">Kiểu 1</option>
+                    <option value=" type2">Kiểu 2</option>
+                </select>
+            </div>
+
+            <div class="table-container active">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Tên</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Mục A</td>
+                        <td>100</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Mã</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                    <tr>
+                        <td>B01</td>
+                        <td>OK</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="table-container">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Sự kiện</th>
+                    </tr>
+                    <tr>
+                        <td>17/07</td>
+                        <td>Ví dụ</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- PHẦN 2 -->
+        <div class="section2">
+            <h3>NHẬP ĐÁP ÁN</h3>
+            <div class="input-table">
+                <input type="text" placeholder="Dòng 1">
+                <input type="text" placeholder="Dòng 2">
+                <input type="text" placeholder="Dòng 3">
+            </div>
+            <div class="buttons">
+                <button onclick="alert('Đã lưu!')">THÊM</button>
+                <button onclick="document.querySelector('textarea').value=''">Xóa</button>
+            </div>
+        </div>
+
+        <!-- PHẦN 3 -->
+        <div class="section3">
+            <h3>PHÂN TÍCH DỮ LIỆU</h3>
+            <textarea placeholder="Nhập ghi chú..."></textarea>
+            <div class="buttons">
+                <button onclick="alert('Đã lưu!')">Lưu</button>
+                <button onclick="document.querySelector('textarea').value=''">Xóa</button>
+            </div>
+        </div>
+
+        <!-- PHẦN 4 -->
+        <div class="section4">
+            <h3>THAO TÁC</h3>
+            <div class="buttons">
+                <button id="Add" onclick="alert('Đã lưu!')">THÊM</button>
+                <button id="Delete" onclick="alert('Đã lưu!')">XÓA</button>
+                <button id="DeleteAll" onclick="confirmDelete()">XÓA HẾT</button>
+                <button id="Save" onclick="alert('Đã lưu!')">Lưu</button>
+                <button id="Clear" onclick="document.querySelector('textarea').value=''">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/nhapdapan.js"></script>
+</body>
+
+</html>
